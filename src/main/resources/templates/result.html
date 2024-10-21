@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jysk Search Location</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <div class="card" style="width: 30rem;">
+        <div class="card-body">
+            <h5 class="text-center" th:if="${message != null}" th:text="${message}"></h5>
+            <h4 class="card-title text-center">Search Location</h4>
+            <form th:action="@{/search}" method="post">
+                <div class="form-group">
+                    <input type="text" name="searchField" class="form-control" placeholder="Enter city or zipcode" required>
+                    <input type="text" name="userMessage" class="form-control" th:value="${message}" hidden>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Display results or error messages -->
+<div class="container mt-4" th:if="${location != null}">
+    <div class="card" style="width: 30rem;">
+        <div class="card-body">
+            <div th:if="${location.errorMessage == null}">
+                <h5 class="card-title">Location Found</h5>
+                <p><strong>City:</strong> <span th:text="${location.cityName}"></span></p>
+                <p><strong>Zipcode:</strong> <span th:text="${location.zipcode}"></span></p>
+            </div>
+            <div th:if="${location.errorMessage != null}">
+                <h5 class="card-title text-danger"><p th:text="${location.errorMessage}"></p></h5>
+            </div>
+            <div><a href="/">Back to Home</a> </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

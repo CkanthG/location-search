@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: location-search
+logging:
+  level:
+    root: INFO
+    com:
+      jysk:
+        location: DEBUG
