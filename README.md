@@ -60,3 +60,14 @@ UI Screens FYR.
 ![](src/main/resources/assets/search-by-zip-code.png)
 ![](src/main/resources/assets/invalid-search.png)
 
+### GitHub Actions
+
+Implemented the CI-CD GitHub Actions.
+1. Automatically Build the Application When code commit to **main** branch.
+2. Automatically Push the Builded application to DockerHub.
+
+### Kubernetes Deployment
+
+Added Kubernetes Deployment File to
+1. Pull the Latest Image from DockerHub.
+2. Deploy the Application in the Minikube cluster.
